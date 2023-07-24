@@ -55,7 +55,7 @@ public class RegTest {
         // Отправка формы
         $("#submit").click();
 
-        // Проверка успешной отправки формы (можно добавить другие проверки)
+        // Проверка успешной отправки формы
         $("#example-modal-sizes-title-lg").shouldHave(visible.text("Thanks for submitting the form"));
 
     }
