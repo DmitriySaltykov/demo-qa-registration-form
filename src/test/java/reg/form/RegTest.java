@@ -21,7 +21,7 @@ public class RegTest {
 
 
     @Test
-    void  regtest() {
+    void  regTest() {
 
         open("/automation-practice-form");
 
