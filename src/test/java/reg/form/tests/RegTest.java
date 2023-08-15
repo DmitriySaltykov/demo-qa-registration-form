@@ -1,4 +1,4 @@
-package reg.form;
+package reg.form.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
