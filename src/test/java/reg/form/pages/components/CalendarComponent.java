@@ -1,4 +1,4 @@
-package reg.form.pages;
+package reg.form.pages.components;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;

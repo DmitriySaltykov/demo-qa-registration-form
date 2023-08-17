@@ -1,6 +1,8 @@
 package reg.form.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import reg.form.pages.components.CalendarComponent;
+import reg.form.pages.components.ResultsModalComponent;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -8,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
 
     CalendarComponent calendarComponent = new CalendarComponent();
-    ResultsModal resultsModal = new ResultsModal();
+    ResultsModalComponent resultsModal = new ResultsModalComponent();
 
     // Selenide elements / locators / etc
     SelenideElement firstNameInput = $("#firstName"),
