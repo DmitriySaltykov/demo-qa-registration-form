@@ -24,7 +24,9 @@ public class PracticeFormPageObjectsTests extends TestBase{
                 .setHobby("Music")
                 .selectPicture("qa-image.png")
                 .setCurrentAddress("Changu, Bali")
-                .setStateAndCity("Uttar Pradesh", "Merrut")
+                .setState("Uttar Pradesh")
+                .setCity("Merrut")
+
                 .clickOnSubmitButton();
 
         registrationPage.verifyRegistrationResultModalAppears()

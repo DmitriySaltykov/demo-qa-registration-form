@@ -6,6 +6,7 @@ import reg.form.pages.components.ResultsModalComponent;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static reg.form.utils.Testdata.city;
 
 public class RegistrationPage {
 
@@ -100,9 +101,11 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setStateAndCity(String state, String city) {
+    public RegistrationPage setState(String state) {
         selectState.click();
         $(byText(state)).click();
+        return  this;}
+    public RegistrationPage setCity(String state) {
         selectCity.click();
         $(byText(city)).click();
 
@@ -125,4 +128,8 @@ public class RegistrationPage {
 
         return this;
     }
+
+
+
+
 }
