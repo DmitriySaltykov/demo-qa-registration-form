@@ -6,12 +6,12 @@ import reg.form.pages.components.ResultsModalComponent;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static reg.form.utils.Testdata.city;
 
 public class RegistrationPage {
 
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultsModalComponent resultsModal = new ResultsModalComponent();
+
 
     // Selenide elements / locators / etc
     SelenideElement firstNameInput = $("#firstName"),
@@ -26,7 +26,7 @@ public class RegistrationPage {
             currentAddressInput = $("#currentAddress"),
             selectState = $("#state"),
             selectCity = $("#city"),
-            submitButton = $("#submit");
+            submitButton = $("#clickOnSubmitButton");
 
 
     // Actions
@@ -100,22 +100,22 @@ public class RegistrationPage {
 
         return this;
     }
-
     public RegistrationPage setState(String state) {
         selectState.click();
         $(byText(state)).click();
-        return  this;}
-    public RegistrationPage setCity(String state) {
+        return  this;
+    }
+    public RegistrationPage setCity(String city) {
         selectCity.click();
         $(byText(city)).click();
 
         return this;
     }
 
-    public RegistrationPage clickOnSubmitButton() {
+
+    public void clickOnSubmitButton() {
         submitButton.click();
 
-        return this;
     }
     public RegistrationPage verifyRegistrationResultModalAppears() {
         resultsModal.verifyModalAppears();

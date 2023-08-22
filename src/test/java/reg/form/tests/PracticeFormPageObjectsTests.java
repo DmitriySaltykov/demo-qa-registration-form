@@ -25,8 +25,7 @@ public class PracticeFormPageObjectsTests extends TestBase{
                 .selectPicture("qa-image.png")
                 .setCurrentAddress("Changu, Bali")
                 .setState("Uttar Pradesh")
-                .setCity("Merrut")
-
+                .setCity( "Agra")
                 .clickOnSubmitButton();
 
         registrationPage.verifyRegistrationResultModalAppears()
@@ -39,7 +38,7 @@ public class PracticeFormPageObjectsTests extends TestBase{
                 .verifyResult("Hobbies", "Sports, Music")
                 .verifyResult("Picture", "qa-image.png")
                 .verifyResult("Address", "Changu, Bali")
-                .verifyResult("State and City", "Uttar Pradesh Merrut");
+                .verifyResult("State and City", "Uttar Pradesh Agra");
 
     }
 }

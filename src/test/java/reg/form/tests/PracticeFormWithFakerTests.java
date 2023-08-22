@@ -11,14 +11,15 @@ public class PracticeFormWithFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
+
     @Test
     void successfulFillFormTestFull() {
 
 
 
         registrationPage.openPage()
-                
-                
+
+                .closeAdBanners()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)

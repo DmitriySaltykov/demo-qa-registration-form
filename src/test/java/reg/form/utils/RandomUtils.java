@@ -2,28 +2,18 @@ package reg.form.utils;
 
 import com.github.javafaker.Faker;
 
-import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
 
-    public static String getRandomString(int len) {
-        String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        SecureRandom rnd = new SecureRandom();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < len; i++)
-            sb.append(AB.charAt(rnd.nextInt(AB.length())));
-
-        return sb.toString();
-    }
 
     public static String getRandomFirstName() {
 
         return new Faker(Locale.ENGLISH).name().firstName();
     }
+
 
     public static String getRandomLastName() {
 
@@ -41,11 +31,6 @@ public class RandomUtils {
         return new Faker().options().option(genders);
     }
 
-    public static int getRandomInt(int min, int max) {
-
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
     public static String getRandomPhone() {
 
         return new Faker().phoneNumber().subscriberNumber(10);
@@ -54,7 +39,7 @@ public class RandomUtils {
     public static String[] getRandomDate(int minAge, int maxAge) {
         Faker faker = new Faker();
         Date date = faker.date().birthday(minAge, maxAge);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy", Locale.ENGLISH);
 
         return dateFormat.format(date).split("-");
     }

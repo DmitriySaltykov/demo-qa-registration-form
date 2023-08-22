@@ -1,5 +1,5 @@
 
-package hwjava;
+package HWJava;
 
 public class HWJavaTest {
 
