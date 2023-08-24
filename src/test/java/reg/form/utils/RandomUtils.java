@@ -54,13 +54,7 @@ public class RandomUtils {
         int year = faker.number().numberBetween(1980, 2010);
         return Integer.toString(year);
     }
-//    public  String[] getRandomDate(int minAge, int maxAge) {
-//        Faker faker = new Faker();
-//        Date date = faker.date().birthday(minAge, maxAge);
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy", Locale.ENGLISH);
-//
-//        return dateFormat.format(date).split("-");
-//    }
+
 
     public  String getRandomSubject() {
         String[] subject = { "Computer Science", "Commerce", "Economics", "Social Studies"};
