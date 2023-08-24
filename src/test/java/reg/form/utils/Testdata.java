@@ -1,24 +1,22 @@
 package reg.form.utils;
 
-import static reg.form.utils.RandomUtils.*;
 
 public class Testdata {
-
-    public static String[] birthdayDate = getRandomDate(14, 99);
-
-    public static String
-            firstName = getRandomFirstName(),
-            lastName = getRandomLastName(),
-            userEmail = getRandomEmail(),
-            userGender = getRandomGender(),
-            userNumber = getRandomPhone(),
-            birthDay = birthdayDate[0],
-            birthdayMonth = birthdayDate[1],
-            birthdayYear = birthdayDate[2],
-            subject = getRandomSubject(),
-            hobby = getRandomHobbies(),
+    RandomUtils RandomUtils = new RandomUtils();
+  //  public  String[] birthdayDate = RandomUtils.getRandomDate(14, 99);
+    public  String
+            firstName = RandomUtils.getRandomFirstName(),
+            lastName = RandomUtils.getRandomLastName(),
+            userEmail = RandomUtils.getRandomEmail(),
+            userGender = RandomUtils.getRandomGender(),
+            userNumber = RandomUtils.getRandomPhone(),
+            birthDay = RandomUtils.getRandomDay(),
+            birthdayMonth = RandomUtils.getRandomMonth(),
+            birthdayYear = RandomUtils.getRandomYear(),
+            subject = RandomUtils.getRandomSubject(),
+            hobby = RandomUtils.getRandomHobbies(),
             fileName = "qa-image.png",
-            streetAddress = getRandomAddress(),
-            state = getRandomState(),
-            city = getRandomCity(state);
+            streetAddress = RandomUtils.getRandomAddress(),
+            state = RandomUtils.getRandomState(),
+            city = RandomUtils.getRandomCity(state);
 }

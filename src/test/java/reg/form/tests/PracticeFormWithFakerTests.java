@@ -3,14 +3,14 @@ package reg.form.tests;
 
 import org.junit.jupiter.api.Test;
 import reg.form.pages.RegistrationPage;
+import reg.form.utils.Testdata;
 
-import static reg.form.utils.Testdata.*;
 
 
 public class PracticeFormWithFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-
+    Testdata testData = new Testdata();
 
     @Test
     void successfulFillFormTestFull() {
@@ -20,31 +20,31 @@ public class PracticeFormWithFakerTests extends TestBase {
         registrationPage.openPage()
 
                 .closeAdBanners()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setUserEmail(userEmail)
-                .setGender(userGender)
-                .setUserNumber(userNumber)
-                .setBirthDate(birthDay, birthdayMonth, birthdayYear)
-                .setSubject(subject)
-                .setHobby(hobby)
-                .selectPicture(fileName)
-                .setCurrentAddress(streetAddress)
-                .setState(state)
-                .setCity(city)
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setUserEmail(testData.userEmail)
+                .setGender(testData.userGender)
+                .setUserNumber(testData.userNumber)
+                .setBirthDate(testData.birthDay, testData.birthdayMonth, testData.birthdayYear)
+                .setSubject(testData.subject)
+                .setHobby(testData.hobby)
+                .selectPicture(testData.fileName)
+                .setCurrentAddress(testData.streetAddress)
+                .setState(testData.state)
+                .setCity(testData.city)
                 .clickOnSubmitButton();
 
         registrationPage.verifyRegistrationResultModalAppears()
-                .verifyResult("Student Name", firstName + " " + lastName)
-                .verifyResult("Student Email", userEmail)
-                .verifyResult("Gender", userGender)
-                .verifyResult("Mobile", userNumber)
-                .verifyResult("Date of Birth", birthDay + " " + birthdayMonth + "," + birthdayYear)
-                .verifyResult("Subjects", subject)
-                .verifyResult("Hobbies", hobby)
-                .verifyResult("Picture", fileName)
-                .verifyResult("Address", streetAddress)
-                .verifyResult("State and City", state + " " + city);
+                .verifyResult("Student Name", testData.firstName + " " + testData.lastName)
+                .verifyResult("Student Email", testData.userEmail)
+                .verifyResult("Gender", testData.userGender)
+                .verifyResult("Mobile", testData.userNumber)
+                .verifyResult("Date of Birth", testData.birthDay + " " + testData.birthdayMonth + "," + testData.birthdayYear)
+                .verifyResult("Subjects", testData.subject)
+                .verifyResult("Hobbies", testData.hobby)
+                .verifyResult("Picture", testData.fileName)
+                .verifyResult("Address", testData.streetAddress)
+                .verifyResult("State and City", testData.state + " " + testData.city);
 
     }
 }

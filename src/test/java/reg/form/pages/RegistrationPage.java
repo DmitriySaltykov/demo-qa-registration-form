@@ -26,7 +26,7 @@ public class RegistrationPage {
             currentAddressInput = $("#currentAddress"),
             selectState = $("#state"),
             selectCity = $("#city"),
-            submitButton = $("#clickOnSubmitButton");
+            submitButton = $("#submit");
 
 
     // Actions

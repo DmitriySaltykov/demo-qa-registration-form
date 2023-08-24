@@ -2,88 +2,106 @@ package reg.form.utils;
 
 import com.github.javafaker.Faker;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 public class RandomUtils {
 
+     Faker faker = new Faker(new Locale("en"));
+    public  String getRandomFirstName() {
 
-    public static String getRandomFirstName() {
-
-        return new Faker(Locale.ENGLISH).name().firstName();
+        return faker.name().firstName();
     }
 
 
-    public static String getRandomLastName() {
+    public  String getRandomLastName() {
 
-        return new Faker(Locale.ENGLISH).name().lastName();
+        return faker.name().lastName();
     }
 
-    public static String getRandomEmail() {
+    public  String getRandomEmail() {
 
-        return new Faker().internet().emailAddress();
+        return faker.internet().emailAddress();
     }
 
-    public static String getRandomGender() {
+    public  String getRandomGender() {
         String[] genders = {"Male", "Female", "Other"};
 
-        return new Faker().options().option(genders);
+        return faker.options().option(genders);
     }
 
-    public static String getRandomPhone() {
+    public  String getRandomPhone() {
 
-        return new Faker().phoneNumber().subscriberNumber(10);
+        return faker.phoneNumber().subscriberNumber(10);
     }
 
-    public static String[] getRandomDate(int minAge, int maxAge) {
-        Faker faker = new Faker();
-        Date date = faker.date().birthday(minAge, maxAge);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy", Locale.ENGLISH);
-
-        return dateFormat.format(date).split("-");
+    public String getRandomDay() {
+        int day = faker.number().numberBetween(01, 28);
+        if (day < 10) {
+            return "0" + day;
+        } else {
+            return Integer.toString(day);
+        }
     }
 
-    public static String getRandomSubject() {
+    public String getRandomMonth() {
+        String[] months = {"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
+
+        return faker.options().option(months);
+    }
+
+    public String getRandomYear() {
+        int year = faker.number().numberBetween(1980, 2010);
+        return Integer.toString(year);
+    }
+//    public  String[] getRandomDate(int minAge, int maxAge) {
+//        Faker faker = new Faker();
+//        Date date = faker.date().birthday(minAge, maxAge);
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy", Locale.ENGLISH);
+//
+//        return dateFormat.format(date).split("-");
+//    }
+
+    public  String getRandomSubject() {
         String[] subject = { "Computer Science", "Commerce", "Economics", "Social Studies"};
 
-        return new Faker().options().option(subject);
+        return faker.options().option(subject);
     }
 
-    public static String getRandomHobbies() {
+    public  String getRandomHobbies() {
         String[] hobby = {"Sports", "Reading", "Music"};
 
-        return new Faker().options().option(hobby);
+        return faker.options().option(hobby);
     }
 
-    public static String getRandomAddress() {
-        return new Faker().address().streetAddress();
+    public  String getRandomAddress() {
+        return faker.address().streetAddress();
     }
 
-    public static String getRandomState() {
+    public  String getRandomState() {
         String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
-        return new Faker().options().option(state);
+        return faker.options().option(state);
     }
 
-    public static String getRandomCity(String state) {
+    public  String getRandomCity(String state) {
 
         if (state.equals("NCR")) {
             String[] cityNCR = {"Delhi", "Gurgaon", "Noida"};
 
-            return new Faker().options().option(cityNCR);
+            return faker.options().option(cityNCR);
         } else if (state.equals("Uttar Pradesh")) {
             String[] cityUP = {"Agra", "Lucknow", "Merrut"};
 
-            return new Faker().options().option(cityUP);
+            return faker.options().option(cityUP);
         } else if (state.equals("Haryana")) {
             String[] cityH = {"Karnal", "Panipat"};
 
-            return new Faker().options().option(cityH);
+            return faker.options().option(cityH);
         } else {
             String[] cityR = {"Jaipur", "Jaiselmer"};
 
-            return new Faker().options().option(cityR);
+            return faker.options().option(cityR);
         }
     }
 }
