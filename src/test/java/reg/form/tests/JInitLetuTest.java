@@ -1,18 +1,23 @@
 package guru.qa;
 
+import com.codeborne.selenide.CollectionCondition;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class JInitLetuTest {
 
     @ValueSource(strings = {"Главная" , "Shorts", "Подписки"})
-    @ParameterizedTest(name = "Wikipedia home page should have \"{0}\" language.")
+    @ParameterizedTest(name = "Youtube home page should have \"{0}\" categories.")
     void wikipediaHomePageShouldHaveLanguageTest(String testData) {
 
         open("https://www.youtube.com/");
@@ -25,7 +30,7 @@ public class JInitLetuTest {
             "QA GURU, Школа инженеров по автоматизации тестирования",
             "Academeg, Итак ....  Меня зовут Костик, и я имею свой субъективный взгляд на автомобили"
     })
-    @ParameterizedTest(name = "Wikipedia page for \"{0}\" should have text \"{1}\" in its first paragraph.")
+    @ParameterizedTest(name = "Youtube chanel  \"{0}\" should have text \"{1}\" in descreption.")
     void wikipediaShouldHaveTextInArticleTest(String testData, String expectedResult) {
 
         open("https://www.youtube.com/");
@@ -35,19 +40,27 @@ public class JInitLetuTest {
         $("#description-container").shouldHave(text(expectedResult));
 
     }
-//
-//    static Stream<Arguments> wikiJavaTest() {
-//        return Stream.of(
-//                Arguments.of("Java", List.of("Класс языка", "Появился в", "Автор", "Разработчик","Расширение файлов","Выпуск", "Испытал влияние", "Лицензия", "Сайт")),
-//                Arguments.of("Ява", List.of("Площадь", "Наивысшая точка", "Население", "Плотность населения", "Омывающие акватории", "Страна"))
-//        );
-//    }
-//
-//    @MethodSource
-//    @ParameterizedTest(name = "Wikipedia page for {0} should have {1} characteristics of the subject")
-//    void wikiJavaTest(String java, List<String> characteristic) {
-//        open("https://wikipedia.org/");
-//        $("[name=search]").setValue(java).pressEnter();
-//        $$(".infobox th[scope=row]").shouldHave(CollectionCondition.texts(characteristic));
-//    }
+
+    static Stream<Arguments> YTJavaTest() {
+        return Stream.of(
+                Arguments.of("QA GURU", List.of("Главная", "Видео", "Плейлисты", "Сообщество"))
+              //  Arguments.of("Academeg", List.of("Главная", "Видео", "Плейлисты", "Сообщество"))
+        );
+    }
+    @MethodSource
+    @ParameterizedTest(name = "Youtube chanel  \\\"{0}\\\" should have link \\\"{1}\\\" on Links descreption.\"")
+    void YTJavaTest(String java, List<String> characteristic) {
+        open("https://www.youtube.com/");
+
+
+        $("#search-input #search").val(java).pressEnter();
+        $(".style-scope ytd-channel-renderer").click();
+
+       $$("#style-scope ytd-c4-tabbed-header-renderer ").shouldHave(CollectionCondition.texts(characteristic));
+    }
+
+
+
+
+
 }
