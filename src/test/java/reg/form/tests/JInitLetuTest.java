@@ -1,6 +1,9 @@
 package guru.qa;
 
-import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -11,11 +14,17 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class JInitLetuTest {
 
+    @Tags({
+            @Tag("web"),
+            @Tag("search")
+    })
+    @DisplayName("Проверка наличия категорий на странице youtoobe")
     @ValueSource(strings = {"Главная" , "Shorts", "Подписки"})
     @ParameterizedTest(name = "Youtube home page should have \"{0}\" categories.")
     void wikipediaHomePageShouldHaveLanguageTest(String testData) {
@@ -24,7 +33,11 @@ public class JInitLetuTest {
         $(".style-scope ytd-guide-renderer").shouldHave(text(testData));
 
     }
-
+    @Tags({
+            @Tag("web"),
+            @Tag("search")
+    })
+    @DisplayName("Проверка наличия описания на странице канала")
 
     @CsvSource(value = {
             "QA GURU, Школа инженеров по автоматизации тестирования",
@@ -40,23 +53,28 @@ public class JInitLetuTest {
         $("#description-container").shouldHave(text(expectedResult));
 
     }
-
-    static Stream<Arguments> YTJavaTest() {
+    @Tags({
+            @Tag("web"),
+            @Tag("search")
+    })
+    @DisplayName("Проверка наличия табов странице канала")
+    static Stream<Arguments> YTJavaProvider() {
         return Stream.of(
-                Arguments.of("QA GURU", List.of("Главная", "Видео", "Плейлисты", "Сообщество"))
-              //  Arguments.of("Academeg", List.of("Главная", "Видео", "Плейлисты", "Сообщество"))
+                Arguments.of("QA GURU", List.of("Главная", "Видео", "Плейлисты", "Сообщество")),
+                Arguments.of("Academeg", List.of("Главная", "Видео", "Трансляции", "Плейлисты", "Сообщество"))
         );
     }
-    @MethodSource
+    @MethodSource("YTJavaProvider")
     @ParameterizedTest(name = "Youtube chanel  \\\"{0}\\\" should have link \\\"{1}\\\" on Links descreption.\"")
-    void YTJavaTest(String java, List<String> characteristic) {
+    void YTJavaProvider(String java, List<String> characteristic) {
+        Configuration.pageLoadStrategy = "eager";
         open("https://www.youtube.com/");
 
 
         $("#search-input #search").val(java).pressEnter();
         $(".style-scope ytd-channel-renderer").click();
 
-       $$("#style-scope ytd-c4-tabbed-header-renderer ").shouldHave(CollectionCondition.texts(characteristic));
+        $("#tabsContainer").shouldHave(text(String.join(" ", characteristic)));
     }
 
 
