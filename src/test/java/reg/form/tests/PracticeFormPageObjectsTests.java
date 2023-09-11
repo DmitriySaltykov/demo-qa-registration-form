@@ -5,12 +5,14 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import reg.form.pages.RegistrationPage;
 
-@Tag("remote")
+@Tag("pageobject")
 public class PracticeFormPageObjectsTests extends TestBase{
 
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
+
+
     @DisplayName("Заполнение формы регистрации с PageObjects")
     void successfulFillFormTest() {
 
