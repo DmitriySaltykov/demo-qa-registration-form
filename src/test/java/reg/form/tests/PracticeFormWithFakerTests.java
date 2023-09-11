@@ -9,14 +9,13 @@ import reg.form.utils.Testdata;
 
 
 @Tag("remote")
-@DisplayName("Registration with Faker")
 public class PracticeFormWithFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     Testdata testData = new Testdata();
 
     @Test
-    @DisplayName("Заполнение формы регистрации рандомными значениями ")
+    @DisplayName("Registration with Faker")
     void successfulFillFormTestFull() {
 
 
