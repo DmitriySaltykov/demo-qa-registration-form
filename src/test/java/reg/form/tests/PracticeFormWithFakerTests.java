@@ -8,7 +8,7 @@ import reg.form.pages.RegistrationPage;
 import reg.form.utils.Testdata;
 
 
-@Tag("simple")
+@Tag("remote")
 public class PracticeFormWithFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
