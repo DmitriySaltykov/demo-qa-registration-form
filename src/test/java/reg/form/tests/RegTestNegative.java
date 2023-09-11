@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 @Tag("simple")
-public class RegTest {
+public class RegTestNegative {
 
     @BeforeAll
     static void beforeAll() {
@@ -24,7 +24,7 @@ public class RegTest {
 
 
     @Test
-    @DisplayName("Заполнение формы регистрации")
+    @DisplayName("Негативный сценарий заполнения формы регистрации")
     void  regTest() {
 
         open("/automation-practice-form");
@@ -60,7 +60,7 @@ public class RegTest {
         $("#submit").click();
 
         // Проверка успешной отправки формы
-       $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Dim Vit"));
+       $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Ara Vit"));
         $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("d@v.com"));
         $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Male"));
         $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("1234567890"));

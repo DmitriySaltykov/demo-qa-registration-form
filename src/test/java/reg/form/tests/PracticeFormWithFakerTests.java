@@ -1,18 +1,21 @@
 package reg.form.tests;
 
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import reg.form.pages.RegistrationPage;
 import reg.form.utils.Testdata;
 
 
-
+@Tag("simple")
 public class PracticeFormWithFakerTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     Testdata testData = new Testdata();
 
     @Test
+    @DisplayName("Заполнение формы регистрации рандомными значениями ")
     void successfulFillFormTestFull() {
 
 
