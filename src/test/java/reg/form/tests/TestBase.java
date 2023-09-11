@@ -12,6 +12,8 @@ import reg.form.helpers.Attach;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+
 @Tag("remote")
 public class TestBase {
 
@@ -25,6 +27,8 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
+        closeWebDriver();
     }
     @BeforeAll
     static void beforeAll() {
