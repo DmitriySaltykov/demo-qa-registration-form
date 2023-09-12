@@ -11,7 +11,7 @@ public class PracticeFormPageObjectsTests extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-        @DisplayName("Заполнение формы регистрации с PageObjects")
+    @DisplayName("Заполнение формы регистрации с PageObjects")
     void successfulFillFormTest() {
 
         registrationPage.openPage()
