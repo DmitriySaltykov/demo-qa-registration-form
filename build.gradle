@@ -44,9 +44,16 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+task pageobject_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("pageobject")
+    }
+}
 
  task remote_test(type: Test) {
     useJUnitPlatform {
         includeTags("remote")
     }
+
+
 }
