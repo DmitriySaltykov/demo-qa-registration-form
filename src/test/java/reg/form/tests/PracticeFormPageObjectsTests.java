@@ -1,17 +1,17 @@
 package reg.form.tests;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import reg.form.pages.RegistrationPage;
 
-
+@Tag("pageobject")
 public class PracticeFormPageObjectsTests extends TestBase{
 
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    @Tag("pageobject")
-    @DisplayName("Заполнение формы регистрации с PageObjects")
+        @DisplayName("Заполнение формы регистрации с PageObjects")
     void successfulFillFormTest() {
 
         registrationPage.openPage()
